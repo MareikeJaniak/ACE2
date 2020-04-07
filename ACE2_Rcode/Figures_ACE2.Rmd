@@ -1,0 +1,134 @@
+---
+title: "Concept Figure"
+author: "Mareike"
+date: "4/3/2020"
+output: html_document
+---
+
+Load packages:
+```{r}
+library(ggtree)
+library(ggplot2)
+library(ape)
+```
+
+Read in full mammal tree from TimeTree:
+```{r}
+mammal_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/Mammalia_species.nwk")
+```
+
+Drop tips that are not in species list: (necessary because TimeTree species list upload not working at the time)
+```{r}
+species_list <- read.delim("/Users/Mareike/Documents/Data/ACE2/species_list_ACE2.txt", header = FALSE)
+species_list$tips <- gsub(' ', '_', species_list$V1)
+tips <- as.vector(species_list$tips)
+
+ACE2_tr <- keep.tip(mammal_tree, tips)
+```
+
+Read in the table with data on covid susceptibility to color the branches of the phylogeny:
+```{r}
+risk_df <- read.delim("/Users/Mareike/Documents/Data/ACE2/covid-risk.tsv", header = TRUE, sep = "\t")
+
+#making a separate column with species names without underscores to use as tiplabels for the tree
+risk_df$tiplabel <- as.character(gsub("_", " ", risk_df$Species))
+```
+
+Detach ape to use ggtree rotate function:
+```{r}
+detach("package:ape")
+```
+
+Order levels of risk variable for figure:
+```{r}
+risk_df$Risk <- factor(risk_df$Risk, levels = c("known", "predicted", "uncertain", "low", "none"))
+```
+
+
+Plot tree and rotate branches:
+```{r}
+tr1 <- ggtree(ACE2_tr)
+tr2 <- rotate(tr1, 62) %>% rotate(72) %>% rotate(76)
+
+p_tr2 <- tr2 %<+% risk_df + 
+  # adding color to the branches was omitted here and instead done in Illustrator, because msaplot throws an error, if included. See below for another option to generate a combo figure for phylogeny and multiple sequence alignment.
+  #aes(color = Risk) + 
+  scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E58600", "#E8C520", "#82B8B6", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
+  geom_tiplab(color = "black", fontface='italic', hjust = 1, align = TRUE, offset = 30, aes(label=tiplabel))
+
+p_tr2 
+```
+
+Add the plot of the multiple sequence alignment (MSA):
+```{r}
+p_msa <- msaplot(p_tr2, "/Users/Mareike/Documents/Data/ACE2/ACE2_MSA_for_figure.fasta", offset = 33, width = 0.9)
+p_msa
+
+#ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/concept_figure.pdf", plot = p_msa, width = 21, height = 10, units = "in", useDingbats=FALSE)
+```
+
+
+Alternate option for generating a figure of a phylogeny with adjacent multiple sequence alignment:
+
+Make tree object:
+```{r}
+tr1a <- ggtree(ACE2_tr)
+tr2a <- rotate(tr1a, 62) %>% rotate(72) %>% rotate(76)
+
+p_tr2a <- tr2a %<+% risk_df + 
+  aes(color = Risk) + 
+  scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E58600", "#E8C520", "#82B8B6", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
+  geom_tiplab(color = "black", fontface='italic', hjust = 1, align = TRUE, offset = 30, aes(label=tiplabel))
+
+p_tr2a
+```
+
+Add the multiple sequence alignment with the ggmsa package:
+```{r}
+library(Biostrings)
+library (ggmsa)
+x <- readAAStringSet("/Users/Mareike/Documents/Data/ACE2/ACE2_MSA_for_figure.fasta")
+d <- as.dist(stringDist(x, method = "hamming")/width(x)[1])
+data = tidy_msa(x)
+
+facet_plot(p = p_tr2a, geom = geom_msa, data = data,  panel = 'msa', font = NULL, color = "Chemistry_AA") + xlim_tree(1)
+```
+
+Note: An unfortunate issue with both approaches is that the dotted line created by "align = TRUE" continues below the tip label. Haven't been able to find a way to adjust this yet, but these extra dots can be removed in Illustrator.
+
+### Plotting gene trees for Supplemental Figure
+
+* Read in trees:
+```{r}
+MrBayes_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/GeneTrees/ACE2_MrBayes_tree.newick")
+RAxML_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/GeneTrees/ACE2_RAxML_tree.newick")
+```
+
+* Create dataframe for tip labels:
+```{r}
+tiplabs <- data.frame(MrBayes_tree$tip.label)
+tiplabs$tips <- gsub("_", " ", tiplabs$MrBayes_tree.tip.label)
+```
+
+RAxML tree:
+```{r}
+p_tr_ML1 <- ggtree(RAxML_tree) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
+p_tr_ML <- p_tr_ML1 %<+% tiplabs + geom_tiplab(fontface = "italic", aes(label = tips))
+p_tr_ML
+```
+
+MrBayes tree:
+```{r}
+p_tr_Bayes1 <- ggtree(MrBayes_tree) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
+p_tr_Bayes <- p_tr_Bayes1 %<+% tiplabs + geom_tiplab(fontface = "italic", aes(label = tips))
+p_tr_Bayes
+```
+
+Combine both trees into one figure:
+```{r}
+library(ggpubr)
+
+p_genetrees <- ggarrange(p_tr_Bayes, p_tr_ML, ncol = 1, labels = "auto")
+
+#ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/ACE2_GeneTree.pdf", plot = p_genetrees, width = 20, height = 15, units = "in", useDingbats = FALSE)
+```
