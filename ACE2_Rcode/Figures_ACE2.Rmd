@@ -14,12 +14,12 @@ library(ape)
 
 Read in full mammal tree from TimeTree:
 ```{r}
-mammal_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/Mammalia_species.nwk")
+mammal_tree <- read.tree("../Mammalia_species.nwk")
 ```
 
 Drop tips that are not in species list: (necessary because TimeTree species list upload not working at the time)
 ```{r}
-species_list <- read.delim("/Users/Mareike/Documents/Data/ACE2/species_list_ACE2.txt", header = FALSE)
+species_list <- read.delim("../species_list_ACE2.txt", header = FALSE)
 species_list$tips <- gsub(' ', '_', species_list$V1)
 tips <- as.vector(species_list$tips)
 
@@ -28,7 +28,7 @@ ACE2_tr <- keep.tip(mammal_tree, tips)
 
 Read in the table with data on covid susceptibility to color the branches of the phylogeny:
 ```{r}
-risk_df <- read.delim("/Users/Mareike/Documents/Data/ACE2/covid-risk.tsv", header = TRUE, sep = "\t")
+risk_df <- read.delim("../Metadata/covid-risk.tsv", header = TRUE, sep = "\t")
 
 #making a separate column with species names without underscores to use as tiplabels for the tree
 risk_df$tiplabel <- as.character(gsub("_", " ", risk_df$Species))
@@ -61,7 +61,7 @@ p_tr2
 
 Add the plot of the multiple sequence alignment (MSA):
 ```{r}
-p_msa <- msaplot(p_tr2, "/Users/Mareike/Documents/Data/ACE2/ACE2_MSA_for_figure.fasta", offset = 33, width = 0.9)
+p_msa <- msaplot(p_tr2, "../Alignments/ACE2_MSA_for_figure.fasta", offset = 33, width = 0.9)
 p_msa
 
 #ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/concept_figure.pdf", plot = p_msa, width = 21, height = 10, units = "in", useDingbats=FALSE)
@@ -87,7 +87,7 @@ Add the multiple sequence alignment with the ggmsa package:
 ```{r}
 library(Biostrings)
 library (ggmsa)
-x <- readAAStringSet("/Users/Mareike/Documents/Data/ACE2/ACE2_MSA_for_figure.fasta")
+x <- readAAStringSet("../Alignments/ACE2_MSA_for_figure.fasta")
 d <- as.dist(stringDist(x, method = "hamming")/width(x)[1])
 data = tidy_msa(x)
 
@@ -100,8 +100,8 @@ Note: An unfortunate issue with both approaches is that the dotted line created 
 
 * Read in trees:
 ```{r}
-MrBayes_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/GeneTrees/ACE2_MrBayes_tree.newick")
-RAxML_tree <- read.tree("/Users/Mareike/Documents/Data/ACE2/GeneTrees/ACE2_RAxML_tree.newick")
+MrBayes_tree <- read.tree("../GeneTrees/ACE2_MrBayes_tree.newick")
+RAxML_tree <- read.tree("../GeneTrees/ACE2_RAxML_tree.newick")
 ```
 
 * Create dataframe for tip labels:
