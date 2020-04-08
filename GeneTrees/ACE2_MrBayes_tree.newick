@@ -1,1 +1,99 @@
-(Monodelphis_domestica:0.18908765,(((((Alouatta_palliata:0.01328663999999996,((Aotus_nancymaae:0.011422109999999985,Callithrix_jacchus:0.013276789999999983)'0.53':0.001114188000000016,((Cebus_capucinus:0.003579372000000025,Sapajus_apella:0.001963904999999988)'1':0.006613426000000033,Saimiri_boliviensis:0.011257960000000011)'0.97':0.0015595809999999766)'1':0.0038763619999999666)'1':0.017754590000000015,((((((Cercocebus_atys:0.001520061000000017,Mandrillus_leucophaeus:0.0023452019999999907)'1':0.0019930570000000203,Theropithecus_gelada:0.001394991000000012)'0.99':0.0011478360000000132,((Macaca_fascicularis:0.0010957380000000128,Macaca_nemestrina:0.000287,Macaca_mulatta:0.0035026800000000358)'1':0.0017804129999999807,Papio_anubis:0.0011392510000000078)'0.63':0.000819)'0.98':0.0013512749999999851,Chlorocebus_sabaeus:0.0071251990000000265)'1':0.002973000999999975,Piliocolobus_tephrosceles:0.005553503999999987,Rhinopithecus_roxellana:0.004453386000000004)'1':0.010058850000000008,(((Gorilla_gorilla:0.004929936999999995,Homo_sapiens:0.002727911999999999,(Pan_paniscus:0.000665,Pan_troglodytes:0.000687)'1':0.003184736999999993)'1':0.005498736000000004,Pongo_abelii:0.007925469000000018)'0.99':0.0011253310000000072,(Hylobates_moloch:0.0039504289999999775,Nomascus_leucogenys:0.0038401140000000056)'1':0.005747506000000013)'1':0.007111484000000001)'1':0.012038539999999986)'1':0.03184194000000001,Carlito_syrichta:0.08875686999999999)'1':0.00975834400000003,((Microcebus_murinus:0.03425928,Propithecus_coquereli:0.018327340000000025)'1':0.02045248999999999,Otolemur_garnettii:0.08276889000000004)'1':0.023868410000000007)'0.99':0.011640749999999978,((((Canis_lupus:0.0340666,Mustela_putorius_furo:0.05324629000000003)'1':0.008037114999999984,Felis_catus:0.04142684000000002)'1':0.02058407000000001,Manis_javanica:0.07122590000000001,Sus_scrofa:0.11177780000000001)'0.83':0.004443717999999985,((Hipposideros_pratti:0.058092770000000016,(Rhinolophus_ferrumequinum:0.017971179999999976,(((Rhinolophus_macrotis:0.004357524999999973,Rhinolophus_pusillus:0.012186780000000008)'1':0.008236375000000018,Rhinolophus_sinicus:0.014406110000000028)'1':0.004494427999999995,Rhinolophus_pearsonii:0.016088440000000037)'1':0.013948589999999983)'1':0.025083650000000013)'1':0.027023719999999973,Myotis_daubentonii:0.07452629999999999)'0.95':0.012731060000000016)'0.95':0.01723922):0.18908765);
+#NEXUS
+[ID: 5243399075]
+begin taxa;
+	dimensions ntax=40;
+	taxlabels
+		Alouatta_palliata
+		Aotus_nancymaae
+		Cebus_capucinus
+		Sapajus_apella
+		Saimiri_boliviensis
+		Callithrix_jacchus
+		Cercocebus_atys
+		Mandrillus_leucophaeus
+		Macaca_fascicularis
+		Macaca_nemestrina
+		Papio_anubis
+		Theropithecus_gelada
+		Macaca_mulatta
+		Piliocolobus_tephrosceles
+		Rhinopithecus_roxellana
+		Chlorocebus_sabaeus
+		Gorilla_gorilla
+		Homo_sapiens
+		Pan_paniscus
+		Pan_troglodytes
+		Pongo_abelii
+		Hylobates_moloch
+		Nomascus_leucogenys
+		Microcebus_murinus
+		Propithecus_coquereli
+		Otolemur_garnettii
+		Carlito_syrichta
+		Canis_lupus
+		Felis_catus
+		Mustela_putorius_furo
+		Manis_javanica
+		Hipposideros_pratti
+		Rhinolophus_ferrumequinum
+		Rhinolophus_macrotis
+		Rhinolophus_pusillus
+		Rhinolophus_sinicus
+		Rhinolophus_pearsonii
+		Sus_scrofa
+		Myotis_daubentonii
+		Monodelphis_domestica
+		;
+end;
+begin trees;
+	translate
+		1	Alouatta_palliata,
+		2	Aotus_nancymaae,
+		3	Cebus_capucinus,
+		4	Sapajus_apella,
+		5	Saimiri_boliviensis,
+		6	Callithrix_jacchus,
+		7	Cercocebus_atys,
+		8	Mandrillus_leucophaeus,
+		9	Macaca_fascicularis,
+		10	Macaca_nemestrina,
+		11	Papio_anubis,
+		12	Theropithecus_gelada,
+		13	Macaca_mulatta,
+		14	Piliocolobus_tephrosceles,
+		15	Rhinopithecus_roxellana,
+		16	Chlorocebus_sabaeus,
+		17	Gorilla_gorilla,
+		18	Homo_sapiens,
+		19	Pan_paniscus,
+		20	Pan_troglodytes,
+		21	Pongo_abelii,
+		22	Hylobates_moloch,
+		23	Nomascus_leucogenys,
+		24	Microcebus_murinus,
+		25	Propithecus_coquereli,
+		26	Otolemur_garnettii,
+		27	Carlito_syrichta,
+		28	Canis_lupus,
+		29	Felis_catus,
+		30	Mustela_putorius_furo,
+		31	Manis_javanica,
+		32	Hipposideros_pratti,
+		33	Rhinolophus_ferrumequinum,
+		34	Rhinolophus_macrotis,
+		35	Rhinolophus_pusillus,
+		36	Rhinolophus_sinicus,
+		37	Rhinolophus_pearsonii,
+		38	Sus_scrofa,
+		39	Myotis_daubentonii,
+		40	Monodelphis_domestica
+		;
+   [Note: This tree contains information on the topology, 
+          branch lengths (if present), and the probability
+          of the partition indicated by the branch.]
+   tree con_50_majrule = (40:3.751639e-01,((((1:1.318198e-02,((2:1.090642e-02,6:1.347741e-02)0.538:1.046624e-03,((3:3.508479e-03,4:1.986538e-03)1.000:6.337557e-03,5:1.158663e-02)0.973:1.766604e-03)1.000:4.054736e-03)0.999:1.780974e-02,(((((((7:1.453996e-03,8:2.215056e-03)1.000:1.811534e-03,12:1.470296e-03)0.979:1.148227e-03,((9:1.147623e-03,10:2.786744e-04,13:3.586040e-03)1.000:1.742261e-03,11:1.142104e-03)0.659:7.821199e-04)0.984:1.337606e-03,16:7.273776e-03)1.000:2.847616e-03,15:4.629691e-03)0.531:6.898829e-04,14:5.558043e-03)1.000:9.639500e-03,(((17:4.954257e-03,18:2.767962e-03,(19:7.389134e-04,20:7.235395e-04)1.000:3.198530e-03)1.000:5.421149e-03,21:8.160219e-03)0.987:1.152014e-03,(22:3.958495e-03,23:3.906226e-03)1.000:5.592734e-03)1.000:7.395803e-03)1.000:1.249624e-02)0.999:3.169390e-02,27:8.753687e-02)0.999:1.015146e-02,((24:3.390212e-02,25:1.800574e-02)1.000:2.065419e-02,26:8.158239e-02)1.000:2.456701e-02)0.997:1.153960e-02,((((28:3.353961e-02,30:5.201042e-02)0.999:8.274658e-03,29:4.149288e-02)1.000:1.986754e-02,31:7.252497e-02,38:1.138251e-01)0.827:4.333845e-03,((32:5.857919e-02,(33:1.823339e-02,(((34:4.280064e-03,35:1.217904e-02)1.000:8.507329e-03,36:1.377277e-02)1.000:4.455372e-03,37:1.591610e-02)1.000:1.365713e-02)1.000:2.505864e-02)1.000:2.710602e-02,39:7.221986e-02)0.955:1.252702e-02)0.956:1.773599e-02);
+
+   [Note: This tree contains information only on the topology
+          and branch lengths (median of the posterior probability density).]
+   tree con_50_majrule = (40:3.751639e-01,((((1:1.318198e-02,((2:1.090642e-02,6:1.347741e-02):1.046624e-03,((3:3.508479e-03,4:1.986538e-03):6.337557e-03,5:1.158663e-02):1.766604e-03):4.054736e-03):1.780974e-02,(((((((7:1.453996e-03,8:2.215056e-03):1.811534e-03,12:1.470296e-03):1.148227e-03,((9:1.147623e-03,10:2.786744e-04,13:3.586040e-03):1.742261e-03,11:1.142104e-03):7.821199e-04):1.337606e-03,16:7.273776e-03):2.847616e-03,15:4.629691e-03):6.898829e-04,14:5.558043e-03):9.639500e-03,(((17:4.954257e-03,18:2.767962e-03,(19:7.389134e-04,20:7.235395e-04):3.198530e-03):5.421149e-03,21:8.160219e-03):1.152014e-03,(22:3.958495e-03,23:3.906226e-03):5.592734e-03):7.395803e-03):1.249624e-02):3.169390e-02,27:8.753687e-02):1.015146e-02,((24:3.390212e-02,25:1.800574e-02):2.065419e-02,26:8.158239e-02):2.456701e-02):1.153960e-02,((((28:3.353961e-02,30:5.201042e-02):8.274658e-03,29:4.149288e-02):1.986754e-02,31:7.252497e-02,38:1.138251e-01):4.333845e-03,((32:5.857919e-02,(33:1.823339e-02,(((34:4.280064e-03,35:1.217904e-02):8.507329e-03,36:1.377277e-02):4.455372e-03,37:1.591610e-02):1.365713e-02):2.505864e-02):2.710602e-02,39:7.221986e-02):1.252702e-02):1.773599e-02);
+end;
