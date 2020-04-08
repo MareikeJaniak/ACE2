@@ -1,4 +1,4 @@
-Species	Risk
+Species	PrimateRisk
 Rhinolophus_ferrumequinum	NA
 Rhinolophus_macrotis	NA
 Rhinolophus_pusillus	NA
@@ -34,7 +34,7 @@ Carlito_syrichta	uncertain
 Alouatta_palliata	uncertain
 Hipposideros_pratti	NA
 Myotis_daubentonii	NA
-Sus_scrofa	none
-Canis_lupus	low
-Felis_catus	known
-Mustela_putorius	known
+Sus_scrofa	NA
+Canis_lupus	NA
+Felis_catus	NA
+Mustela_putorius	NA
