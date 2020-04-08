@@ -41,7 +41,7 @@ detach("package:ape")
 
 Order levels of risk variable for figure:
 ```{r}
-risk_df$Risk <- factor(risk_df$Risk, levels = c("known", "predicted", "uncertain", "low", "none"))
+risk_df$Risk <- factor(risk_df$PrimateRisk, levels = c("known", "predicted", "uncertain"))
 ```
 
 
@@ -77,7 +77,7 @@ tr2a <- rotate(tr1a, 62) %>% rotate(72) %>% rotate(76)
 
 p_tr2a <- tr2a %<+% risk_df + 
   aes(color = Risk) + 
-  scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E58600", "#E8C520", "#82B8B6", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
+  scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E1AF00", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
   geom_tiplab(color = "black", fontface='italic', hjust = 1, align = TRUE, offset = 30, aes(label=tiplabel))
 
 p_tr2a
