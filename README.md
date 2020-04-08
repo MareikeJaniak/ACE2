@@ -8,4 +8,6 @@ Nucleotide sequences used in the study are available in the Alignments directory
 
 Sequences were translated and aligned with MAFFT and manually inspected for variation at known key sites. 
 
-Figures were made in R using the R markdown file in the directory ACE2_Rcode.
+Gene trees were built with the scripts "ACE2_gene_tree_MrBayes.sh" and "ACE2_gene_tree_RAxML.sh."
+
+Figures were made in RStudio using the R markdown file in the directory ACE2_Rcode.
