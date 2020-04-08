@@ -98,28 +98,55 @@ Note: An unfortunate issue with both approaches is that the dotted line created 
 
 ### Plotting gene trees for Supplemental Figure
 
+```{r}
+library(ape)
+library(phytools)
+```
+
 * Read in trees:
 ```{r}
-MrBayes_tree <- read.tree("../GeneTrees/ACE2_MrBayes_tree.newick")
+MrBayes_tree <- read.nexus("../GeneTrees/ACE2_MrBayes_tree.nexus")
 RAxML_tree <- read.tree("../GeneTrees/ACE2_RAxML_tree.newick")
 ```
 
 * Create dataframe for tip labels:
 ```{r}
 tiplabs <- data.frame(MrBayes_tree$tip.label)
-tiplabs$tips <- gsub("_", " ", tiplabs$MrBayes_tree.tip.label)
+tiplabs$tips <- gsub("_", " ", tiplabs$tip.label)
+```
+
+Root RAxML tree on outgroup:
+```{r}
+RAxML_tree_rooted <- reroot(RAxML_tree, 39, position = 0.5*RAxML_tree$edge.length[which(RAxML_tree$edge[,2]==39)])
 ```
 
 RAxML tree:
 ```{r}
-p_tr_ML1 <- ggtree(RAxML_tree) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
+p_tr_ML1 <- ggtree(RAxML_tree_rooted) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
 p_tr_ML <- p_tr_ML1 %<+% tiplabs + geom_tiplab(fontface = "italic", aes(label = tips))
 p_tr_ML
 ```
 
 MrBayes tree:
+
+Keep only tree with branch support:
 ```{r}
-p_tr_Bayes1 <- ggtree(MrBayes_tree) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
+MrBayes_tree <- MrBayes_tree$con_50_majrule
+```
+
+Root MrBayes tree on outgroup:
+```{r}
+MrBayes_tree_rooted <- reroot(MrBayes_tree, 40, position = 0.5*MrBayes_tree$edge.length[which(MrBayes_tree$edge[,2]==40)])
+```
+
+Round node labels:
+```{r}
+MrBayes_tree_rooted$node.label <- round(as.numeric(MrBayes_tree_rooted$node.label), digits = 2)
+```
+
+Plot:
+```{r}
+p_tr_Bayes1 <- ggtree(MrBayes_tree_rooted) + geom_treescale() + geom_text2(size = 3.5, aes(subset = !isTip, label=label, hjust = 1.2, vjust = -0.8))
 p_tr_Bayes <- p_tr_Bayes1 %<+% tiplabs + geom_tiplab(fontface = "italic", aes(label = tips))
 p_tr_Bayes
 ```
