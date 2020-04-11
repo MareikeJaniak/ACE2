@@ -1,8 +1,9 @@
 # ACE2
-Supporting material and code for primate ACE2 project
+Supporting material and code for the primate comparative ACE2 project
 
-Preprint available here:
-TBD
+Preprint available on bioRxiv.
+
+Melin AD, Janiak MC, Marrone F, Arora PS, Higham JP. Comparative ACE2 variation and primate COVID-19 risk. bioRxiv 2020.04.09.034967; doi: https://doi.org/10.1101/2020.04.09.034967
 
 Nucleotide sequences used in the study are available in the Alignments directory, or can be retrieved from NCBI with the script "fetch_ACE2_nucl_seqs.sh" using entrez direct utilities (https://www.ncbi.nlm.nih.gov/books/NBK179288/).
 
