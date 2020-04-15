@@ -37,3 +37,5 @@ Sus scrofa
 Canis lupus
 Felis catus
 Mustela putorius
+Daubentonia madagascariensis
+Eulemur flavifrons

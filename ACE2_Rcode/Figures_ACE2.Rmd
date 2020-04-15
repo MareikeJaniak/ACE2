@@ -41,22 +41,22 @@ detach("package:ape")
 
 Order levels of risk variable for figure:
 ```{r}
-risk_df$Risk <- factor(risk_df$PrimateRisk, levels = c("known", "predicted", "uncertain"))
+risk_df$Risk <- factor(risk_df$PrimateRisk, levels = c("demonstrated", "predicted_high", "predicted_low"))
 ```
 
 
 Plot tree and rotate branches:
 ```{r}
 tr1 <- ggtree(ACE2_tr)
-tr2 <- rotate(tr1, 62) %>% rotate(72) %>% rotate(76)
+tr2 <- rotate(tr1, 66) %>% rotate(76) %>% rotate(80)
 
 p_tr2 <- tr2 %<+% risk_df + 
   # adding color to the branches was omitted here and instead done in Illustrator, because msaplot throws an error, if included. See below for another option to generate a combo figure for phylogeny and multiple sequence alignment.
   #aes(color = Risk) + 
-  scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E58600", "#E8C520", "#82B8B6", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
+  #scale_color_manual(name = "Covid-19 susceptibility", values = c("#F21A00", "#E58600", "#E8C520", "#82B8B6", "#3B9AB2"), na.translate = TRUE, na.value = "black", guide = "legend") +
   geom_tiplab(color = "black", fontface='italic', hjust = 1, align = TRUE, offset = 30, aes(label=tiplabel))
 
-p_tr2 
+p_tr2
 ```
 
 Add the plot of the multiple sequence alignment (MSA):
@@ -64,7 +64,7 @@ Add the plot of the multiple sequence alignment (MSA):
 p_msa <- msaplot(p_tr2, "../Alignments/ACE2_MSA_for_figure.fasta", offset = 33, width = 0.9)
 p_msa
 
-#ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/concept_figure.pdf", plot = p_msa, width = 21, height = 10, units = "in", useDingbats=FALSE)
+#ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/concept_figure.pdf", plot = p_msa, width = 17, height = 11, units = "in", useDingbats=FALSE)
 ```
 
 
@@ -117,7 +117,7 @@ tiplabs$tips <- gsub("_", " ", tiplabs$tip.label)
 
 Root RAxML tree on outgroup:
 ```{r}
-RAxML_tree_rooted <- reroot(RAxML_tree, 39, position = 0.5*RAxML_tree$edge.length[which(RAxML_tree$edge[,2]==39)])
+RAxML_tree_rooted <- reroot(RAxML_tree, 6, position = 0.5*RAxML_tree$edge.length[which(RAxML_tree$edge[,2]==6)])
 ```
 
 RAxML tree:
@@ -136,7 +136,7 @@ MrBayes_tree <- MrBayes_tree$con_50_majrule
 
 Root MrBayes tree on outgroup:
 ```{r}
-MrBayes_tree_rooted <- reroot(MrBayes_tree, 40, position = 0.5*MrBayes_tree$edge.length[which(MrBayes_tree$edge[,2]==40)])
+MrBayes_tree_rooted <- reroot(MrBayes_tree, 42, position = 0.5*MrBayes_tree$edge.length[which(MrBayes_tree$edge[,2]==42)])
 ```
 
 Round node labels:
@@ -155,7 +155,7 @@ Combine both trees into one figure:
 ```{r}
 library(ggpubr)
 
-p_genetrees <- ggarrange(p_tr_Bayes, p_tr_ML, ncol = 1, labels = "auto")
+p_genetrees <- ggarrange(p_tr_Bayes, p_tr_ML, ncol = 1, labels = "AUTO")
 
 #ggsave("/Users/Mareike/Documents/Data/ACE2/Figures/ACE2_GeneTree.pdf", plot = p_genetrees, width = 20, height = 15, units = "in", useDingbats = FALSE)
 ```
