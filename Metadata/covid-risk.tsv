@@ -4,15 +4,15 @@ Rhinolophus_macrotis	NA
 Rhinolophus_pusillus	NA
 Rhinolophus_sinicus	NA
 Rhinolophus_pearsonii	NA
-Homo_sapiens	demonstrated
+Homo_sapiens	demonstrated_high
 Gorilla_gorilla	predicted_high
 Pan_paniscus	predicted_high
 Pan_troglodytes	predicted_high
 Hylobates_moloch	predicted_high
 Nomascus_leucogenys	predicted_high
 Pongo_abelii	predicted_high
-Macaca_mulatta	demonstrated
-Macaca_fascicularis	predicted_high
+Macaca_mulatta	demonstrated_high
+Macaca_fascicularis	demonstrated_high
 Macaca_nemestrina	predicted_high
 Papio_anubis	predicted_high
 Theropithecus_gelada	predicted_high
@@ -25,7 +25,7 @@ Aotus_nancymaae	predicted_low
 Cebus_capucinus	predicted_low
 Sapajus_apella	predicted_low
 Saimiri_boliviensis	predicted_low
-Callithrix_jacchus	predicted_low
+Callithrix_jacchus	demonstrated_low
 Microcebus_murinus	predicted_low
 Propithecus_coquereli	predicted_high
 Otolemur_garnettii	predicted_low
