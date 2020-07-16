@@ -11,4 +11,6 @@ Sequences were translated, and aligned with MAFFT and manually inspected for var
 
 Gene trees were built with the scripts "ACE2_gene_tree_MrBayes.sh" and "ACE2_gene_tree_RAxML.sh."
 
+Input and control files for all PAML codeml analyses are in the PAML directory.
+
 Figures were made in RStudio using the R markdown file in the directory ACE2_Rcode.
