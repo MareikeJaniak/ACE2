@@ -5,12 +5,13 @@ date: "4/3/2020"
 output: html_document
 ---
 
-Load packages:
+#### Load packages:
 ```{r}
 library(ggtree)
 library(ggplot2)
 library(ape)
 ```
+#### Make tree figure for species included in analyses
 
 Read in full mammal tree from TimeTree:
 ```{r}
@@ -59,7 +60,7 @@ p_tr2 <- tr2 %<+% risk_df +
 p_tr2
 ```
 
-Add the plot of the multiple sequence alignment (MSA):
+### Add the plot of the multiple sequence alignment (MSA):
 ```{r}
 p_msa <- msaplot(p_tr2, "../Alignments/ACE2_MSA_for_figure.fasta", offset = 33, width = 0.9)
 p_msa
@@ -68,7 +69,7 @@ p_msa
 ```
 
 
-Alternate option for generating a figure of a phylogeny with adjacent multiple sequence alignment:
+### Alternate option for generating a figure of a phylogeny with adjacent multiple sequence alignment:
 
 Make tree object:
 ```{r}

@@ -1,0 +1,47 @@
+---
+title: "ACE2 Phylogenetics"
+author: "Mareike"
+date: "6/22/2020"
+output: html_document
+---
+
+### Identify phylogenetically informative sites across ACE2 gene
+
+Load libraries:
+```{r}
+library(ips)
+```
+
+Read MSAs:
+```{r}
+ACE2_MSA <- read.fas("../Alignments/ACE2_nucleotide_alignment.fasta")
+ACE2_AA <- read.fas("../Alignments/ACE2_protein_alignment.fasta")
+ACE2_primate <- read.fas("../Alignments/ACE2_nucleotide_alignment_primates_only.fasta")
+```
+
+Find phylogenetically informative sites:
+Number of sites
+```{r}
+pis(ACE2_MSA, what = "absolute")
+pis(ACE2_MSA, what = "fraction")
+
+pis(ACE2_primate, what = "absolute")
+pis(ACE2_primate, what = "fraction")
+```
+
+Positions of potentially informative sites:
+All species:
+```{r}
+pis(ACE2_MSA, what = "index")
+```
+
+Primates only:
+```{r}
+pis_primate <- pis(ACE2_primate, what = "index")
+```
+
+Convert positions to amino acid positions for comparison with PAML output:
+```{r}
+unique(floor(pis_primate/3))
+```
+
