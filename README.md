@@ -1,4 +1,4 @@
-https://zenodo.org/badge/DOI/10.5281/zenodo.4018807.svg
+[![DOI:10.5281/zenodo.4018807](https://zenodo.org/badge/DOI/10.5281/zenodo.4018807.svg)](https://zenodo.org/badge/DOI/10.5281/zenodo.4018807)
 
 # ACE2
 Supporting material and code for the primate comparative ACE2 project
