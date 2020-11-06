@@ -4,7 +4,8 @@
 Supporting material and code for the primate comparative ACE2 project
 
 Melin AD, Janiak MC, Marrone F, Arora PS, Higham JP. (2020). Comparative ACE2 variation and primate COVID-19 risk. Communications Biology, 3:641.
-DOI: 	10.1038/s42003-020-01370-w
+
+DOI: https://doi.org/10.1038/s42003-020-01370-w
 
 Nucleotide sequences used in the study are available in the Alignments directory, or can be retrieved from NCBI with the script "fetch_ACE2_nucl_seqs.sh" using entrez direct utilities (https://www.ncbi.nlm.nih.gov/books/NBK179288/).
 
